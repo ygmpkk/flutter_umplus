@@ -1,8 +1,9 @@
 name: flutter_umplus
-description: A new flutter plugin project.
+description: 一个简单的友盟 umeng app+ 统计，其他几个库的坑都踩过了，吸收了它们的优点，建议大家有这个库。
 version: 0.0.1
-author:
-homepage:
+author: 'Timothy <ygmpkk@gmail.com>'
+homepage: 'https://github.com/ygmpkk/flutter_umplus'
+
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

@@ -18,6 +18,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+
+    initUMeng();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -38,6 +40,21 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _platformVersion = platformVersion;
     });
+  }
+
+  initUMeng() {
+    // channel 可设置为空
+    FlutterUmplus.init(
+      'Your umeng appkey',
+      channel: 'Your channel',
+      reportCrash: false,
+      logEnable: true,
+      encrypt: true,
+    );
+
+    FlutterUmplus.beginPageView('demo');
+    FlutterUmplus.endPageView('demo');
+    FlutterUmplus.event('eventName', label: 'eventLabel');
   }
 
   @override
