@@ -30,27 +30,80 @@ FlutterUmplus.init(
 );
 ```
 
-页面开始
+页面统计需要在你自己的State基类上重写
 
-```
-@override
-void initState() {
-	super.initState();
-	
-	FlutterUmplus.beginPageView('demo');
+```Dart
 
-}
-```
+  static List<BaseState> _STATES = [];
+  static Map<BaseState, bool> _STATE_VISIBLE = {};
 
-页面结束
+  static void _state_push(BaseState state) {
+    if (!_STATES.contains(state)) {
+      if (_STATES.length > 0) {
+        var pre = _STATES.last;
+        if (_STATE_VISIBLE[pre]) {
+          _STATE_VISIBLE[pre] = false;
+          pre.onHide();
+        }
+      }
 
-```
-@override
-void dispose() {
-	FlutterUmplus.endPageView('demo');
-	// FIXME 这个最好放在最后，iOS有效，Android无论如何都无效。
-	super.dispose();
-}
+      _STATES.add(state);
+      _STATE_VISIBLE[state] = true;
+      state.onShow();
+    }
+  }
+
+  static void _state_leave(BaseState state) {
+    if (_STATES.contains(state)) {
+      if (_STATE_VISIBLE[state]) {
+        _STATE_VISIBLE[state] = false;
+        state.onHide();
+      }
+    }
+  }
+
+  static void _state_remove(state) {
+    if (_STATES.contains(state)) {
+      var ix = _STATES.indexOf(state);
+      _STATES.remove(state);
+      _STATE_VISIBLE.remove(state);
+      if (ix > 0) {
+        var pre = _STATES[ix - 1];
+        if (!_STATE_VISIBLE[pre]) {
+          _STATE_VISIBLE[pre] = true;
+          pre.onShow();
+        }
+      }
+    }
+  }
+
+  void onShow() {
+    // print('life onShow ${runtimeType.toString()}');
+    FlutterUmplus.beginPageView(runtimeType.toString());
+  }
+
+  void onHide() {
+    // print('life onHide ${runtimeType.toString()}');
+    FlutterUmplus.endPageView(runtimeType.toString());
+  }
+
+  @override
+  void initState() {
+    _state_push(this);
+    super.initState();
+  }
+
+  @override
+  void deactivate() {
+    _state_leave(this);
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _state_remove(this);
+    super.dispose();
+  }
 ```
 
 事件埋点
