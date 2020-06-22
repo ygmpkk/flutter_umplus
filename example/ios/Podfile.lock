@@ -1,0 +1,33 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_umplus (0.0.1):
+    - Flutter
+    - UMCCommon
+    - UMCCommonLog
+  - UMCCommon (7.1.0)
+  - UMCCommonLog (2.0.0)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_umplus (from `.symlinks/plugins/flutter_umplus/ios`)
+
+SPEC REPOS:
+  trunk:
+    - UMCCommon
+    - UMCCommonLog
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  flutter_umplus:
+    :path: ".symlinks/plugins/flutter_umplus/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_umplus: 57ebe4b2f988a617c81fb1a13ed789ce4724a89e
+  UMCCommon: 4e80f93492d300245683236668763dc5d0b04dbd
+  UMCCommonLog: 9b7ddde5d14a52fc1986ba5ac3121b8b2f433638
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.9.3

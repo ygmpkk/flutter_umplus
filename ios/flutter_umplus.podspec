@@ -15,10 +15,9 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
+  s.dependency 'UMAnalytics'
   s.dependency 'UMCCommon'
   s.dependency 'UMCCommonLog'
-  s.dependency 'UMCAnalytics'
-  s.dependency 'UMCErrorCatch'
   s.static_framework = true
 
   s.ios.deployment_target = '8.0'

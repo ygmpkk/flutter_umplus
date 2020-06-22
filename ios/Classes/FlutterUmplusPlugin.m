@@ -1,8 +1,8 @@
 #import "FlutterUmplusPlugin.h"
-#import <UMAnalytics/MobClick.h>
+#import <UMCommon/MobClick.h>
 #import <UMCommon/UMCommon.h>
 #import <UMCommonLog/UMCommonLogHeaders.h>
-#import <UMErrorCatch/UMErrorCatch.h>
+//#import <UMErrorCatch/UMErrorCatch.h>
 
 @implementation FlutterUmplusPlugin {
 }
@@ -55,7 +55,7 @@
 
   [MobClick setCrashReportEnabled:reportCrash];
 
-  [UMErrorCatch initErrorCatch];
+  //[UMErrorCatch initErrorCatch];
   result(nil);
 }
 
